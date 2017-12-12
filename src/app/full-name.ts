@@ -1,6 +1,9 @@
 
 export class FullName {
-  first: string;
-  middle?: string;
-  last: string;
+
+  constructor(
+    public first: string,
+    public last: string,
+    public middle?: string) {
+  }
 }

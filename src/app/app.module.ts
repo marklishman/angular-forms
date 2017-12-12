@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {FormComponent} from './form-based/form.component';
-import {ModelComponent} from './model-driven/model.component';
+import {ModelComponent} from './reactive/reactive.component';
 
 @NgModule({
   declarations: [

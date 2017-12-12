@@ -4,10 +4,13 @@ import {FormControl, FormGroup, Validator, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-model-driven',
-  templateUrl: './model.component.html',
+  templateUrl: './reactive.component.html',
   styles: [`
+    input:focus{
+      outline: none;
+    }
     .error {
-      border: 3px solid red;
+      border: 1px solid red;
     }
   `]
 })

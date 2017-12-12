@@ -1,5 +1,5 @@
 
-<h1>Model Based (or Reactive)</h1>
+<h1>Reactive Forms</h1>
 <form [formGroup]="nameForm" (ngSubmit)="submit(nameForm.value)" novalidate>
 
   <div>
@@ -9,7 +9,7 @@
              name="first"
              type="text">
     </label>
-    <span *ngIf="invalid(nameForm.controls.first)">
+    <span *ngIf="invalid(nameForm.get('first'))">
       Enter first name
     </span>
   </div>
@@ -29,7 +29,7 @@
              name="last"
              type="text">
     </label>
-    <span *ngIf="invalid(nameForm.controls.last)">
+    <span *ngIf="invalid(nameForm.get('last'))">
       Enter last name
     </span>
   </p>

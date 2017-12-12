@@ -1,43 +1,42 @@
 
 <h1>Form Based</h1>
-<form #nameForm="ngForm" (ngSubmit)="submit(nameForm.value)" novalidate>
+<form #nameForm="ngForm" (ngSubmit)="submit(nameForm.value)">
 
-  <div>
+  <p>
     <label>First name:
-      <input (ngModel)="fullName.first"
-             [ngClass]="{error : invalid(nameForm.controls.first)}"
-             name="first"
-             type="text"
-             required>
+      <input type="text"
+             required
+             [ngClass]="{error : first.touched && first.invalid}"
+             (ngModel)="fullName.first" name="first"
+             #first="ngModel">
     </label>
-    <span *ngIf="invalid(nameForm.controls.first)">
-      Enter first name
-    </span>
-  </div>
+    <span *ngIf="first.touched && first.invalid">Enter first name</span>
+  </p>
 
   <p>
     <label>Middle initial:
-      <input (ngModel)="fullName.middle"
-             name="middle"
-             type="text">
+      <input type="text" id="middle"
+             (ngModel)="fullName.middle" name="middle">
     </label>
   </p>
+
+
+  <!-- Note: different rules for showing errors (touched & dirty) -->
+
 
   <p>
     <label>Last name:
-      <input (ngModel)="fullName.last"
-             [ngClass]="{error : invalid(nameForm.controls.last)}"
-             name="last"
-             type="text"
-             required>
+      <input type="text"
+             required
+             [ngClass]="{error : last.dirty && last.invalid}"
+             (ngModel)="fullName.last" name="last"
+             #last="ngModel">
     </label>
-    <span *ngIf="invalid(nameForm.controls.last)">
-      Enter last name
-    </span>
+    <span *ngIf="last.dirty && last.invalid">Enter last name</span>
   </p>
 
-  <button [disabled]="nameForm.invalid" type="submit">Submit</button>
-  <button (click)="nameForm.reset()" type="button">Reset</button>
+  <button type="submit" [disabled]="nameForm.invalid" >Submit</button>
+  <button type="button" (click)="nameForm.reset()">Reset</button>
 
   <h1 *ngIf="message">
     {{message}}
