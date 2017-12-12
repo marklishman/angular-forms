@@ -1,0 +1,43 @@
+
+<h1>Model Based (or Reactive)</h1>
+<form [formGroup]="nameForm" (ngSubmit)="submit(nameForm.value)" novalidate>
+
+  <div>
+    <label>First name:
+      <input formControlName="first"
+             [ngClass]="{error : invalid(nameForm.controls.first)}"
+             name="first"
+             type="text">
+    </label>
+    <span *ngIf="invalid(nameForm.controls.first)">
+      Enter first name
+    </span>
+  </div>
+
+  <p>
+    <label>Middle initial:
+      <input formControlName="middle"
+             name="middle"
+             type="text">
+    </label>
+  </p>
+
+  <p>
+    <label>Last name:
+      <input formControlName="last"
+             [ngClass]="{error : invalid(nameForm.controls.last)}"
+             name="last"
+             type="text">
+    </label>
+    <span *ngIf="invalid(nameForm.controls.last)">
+      Enter last name
+    </span>
+  </p>
+
+  <button [disabled]="nameForm.invalid" type="submit">Submit</button>
+  <button (click)="nameForm.reset()" type="button">Reset</button>
+
+  <h1 *ngIf="message">
+    {{message}}
+  </h1>
+</form>
