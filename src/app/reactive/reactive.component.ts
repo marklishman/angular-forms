@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FullName} from '../full-name';
+import {FullName} from '../model/full-name';
 import {FormControl, FormGroup, Validator, Validators} from '@angular/forms';
 
 @Component({

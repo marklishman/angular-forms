@@ -1,13 +1,13 @@
 
 <h1>Form Based</h1>
-<form #nameForm="ngForm" (ngSubmit)="submit(nameForm.value)">
+<form #nameForm="ngForm" (ngSubmit)="save(nameForm.value)">
 
   <p>
     <label>First name:
       <input type="text"
              required
              [ngClass]="{error : first.touched && first.invalid}"
-             (ngModel)="fullName.first" name="first"
+             [(ngModel)]="contact.fullName.first" name="first"
              #first="ngModel">
     </label>
     <span *ngIf="first.touched && first.invalid">Enter first name</span>
@@ -16,29 +16,51 @@
   <p>
     <label>Middle initial:
       <input type="text" id="middle"
-             (ngModel)="fullName.middle" name="middle">
+             [(ngModel)]="contact.fullName.middle" name="middle">
     </label>
   </p>
 
-
   <!-- Note: different rules for showing errors (touched & dirty) -->
-
 
   <p>
     <label>Last name:
       <input type="text"
              required
              [ngClass]="{error : last.dirty && last.invalid}"
-             (ngModel)="fullName.last" name="last"
+             [(ngModel)]="contact.fullName.last" name="last"
              #last="ngModel">
     </label>
     <span *ngIf="last.dirty && last.invalid">Enter last name</span>
   </p>
 
-  <button type="submit" [disabled]="nameForm.invalid" >Submit</button>
-  <button type="button" (click)="nameForm.reset()">Reset</button>
+  <p>
+    <label>Starred:
+      <input type="checkbox"
+             [(ngModel)]="contact.starred" name="starred"
+             #starred="ngModel">
+    </label>
+  </p>
 
-  <h1 *ngIf="message">
-    {{message}}
-  </h1>
+  <p *ngFor="let phone of contact.phoneNumbers; let contactIndex = index">
+    {{phone.number}}
+    <label>
+      <select [(ngModel)]="phone.phoneType" name="{{contactIndex}}">
+        <option *ngFor="let type of PhoneType.values(); let phoneIndex = index"
+                [ngValue]="phoneIndex">
+
+                <!-- Using [value]="phoneIndex" here converted the value to a string in the phone object-->
+
+          {{type}}
+        </option>
+      </select>
+    </label>
+  </p>
+
+  <button type="submit" [disabled]="nameForm.invalid" >Submit</button>
+  <button type="button" (click)="nameForm.reset()">Clear</button>
+
+  <pre>
+    {{contact | json}}
+  </pre>
+
 </form>

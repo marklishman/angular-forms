@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {FullName} from '../full-name';
-import {FormControl} from '@angular/forms';
+import {FullName} from '../model/full-name';
+import { Contact } from '../model/Contact';
+import { PhoneNumber, PhoneType } from '../model/Phone';
 
 @Component({
   selector: 'app-form-based',
@@ -16,11 +17,32 @@ import {FormControl} from '@angular/forms';
 })
 export class FormComponent {
 
-  fullName = {} as FullName;
-  message: string;
+  contact: Contact;
+  PhoneType = PhoneType;
 
-  submit(fullName: FullName): void {
-    this.message = `Your full name is ${fullName.first} ${fullName.middle || ''} ${fullName.last}`;
+  constructor() {
+    this.setup();
+  }
+
+  save(contact: Contact): void {
+    console.log('saving', contact);
+  }
+
+  private setup(): void {
+    const numbers = [
+      new PhoneNumber('0176443434', PhoneType.Work),
+      new PhoneNumber('0165635245', PhoneType.Home),
+    ];
+
+    this.contact = new Contact(
+      new FullName(
+        'Bob',
+        'Twitching'
+      ),
+      numbers,
+      true,
+      ['work', 'agent']
+    );
   }
 
 }
