@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FullName} from '../model/full-name';
-import { Contact } from '../model/Contact';
-import { PhoneNumber, PhoneType } from '../model/Phone';
+import { Contact } from '../model/contact';
+import { PhoneNumber, PhoneType } from '../model/phone';
 
 @Component({
   selector: 'app-form-based',
@@ -37,7 +37,9 @@ export class FormComponent {
     this.contact = new Contact(
       new FullName(
         'Bob',
-        'Twitching'
+        'Twitching',
+        'P',
+        'Twitchy'
       ),
       numbers,
       true,

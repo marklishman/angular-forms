@@ -2,36 +2,45 @@
 <h1>Form Based</h1>
 <form #nameForm="ngForm" (ngSubmit)="save(nameForm.value)">
 
-  <p>
-    <label>First name:
-      <input type="text"
-             required
-             [ngClass]="{error : first.touched && first.invalid}"
-             [(ngModel)]="contact.fullName.first" name="first"
-             #first="ngModel">
-    </label>
-    <span *ngIf="first.touched && first.invalid">Enter first name</span>
-  </p>
+  <div ngModelGroup="fullName">
+    <p>
+      <label>First name:
+        <input type="text"
+               required
+               [ngClass]="{error : first.touched && first.invalid}"
+               [(ngModel)]="contact.fullName.first" name="first"
+               #first="ngModel">
+      </label>
+      <span *ngIf="first.touched && first.invalid">Enter first name</span>
+    </p>
 
-  <p>
-    <label>Middle initial:
-      <input type="text" id="middle"
-             [(ngModel)]="contact.fullName.middle" name="middle">
-    </label>
-  </p>
+    <p>
+      <label>Middle initial:
+        <input type="text"
+               [(ngModel)]="contact.fullName.middle" name="middle">
+      </label>
+    </p>
 
-  <!-- Note: different rules for showing errors (touched & dirty) -->
+    <!-- Note: different rules for showing errors (touched & dirty) -->
 
-  <p>
-    <label>Last name:
-      <input type="text"
-             required
-             [ngClass]="{error : last.dirty && last.invalid}"
-             [(ngModel)]="contact.fullName.last" name="last"
-             #last="ngModel">
-    </label>
-    <span *ngIf="last.dirty && last.invalid">Enter last name</span>
-  </p>
+    <p>
+      <label>Last name:
+        <input type="text"
+               required
+               [ngClass]="{error : last.dirty && last.invalid}"
+               [(ngModel)]="contact.fullName.last" name="last"
+               #last="ngModel">
+      </label>
+      <span *ngIf="last.dirty && last.invalid">Enter last name</span>
+    </p>
+
+    <p>
+      <label>Nickname:
+        <input type="text"
+               [(ngModel)]="contact.fullName.nickname" name="nickname">
+      </label>
+    </p>
+  </div>
 
   <p>
     <label>Starred:
@@ -41,20 +50,22 @@
     </label>
   </p>
 
-  <p *ngFor="let phone of contact.phoneNumbers; let contactIndex = index">
-    {{phone.number}}
-    <label>
-      <select [(ngModel)]="phone.phoneType" name="{{contactIndex}}">
-        <option *ngFor="let type of PhoneType.values(); let phoneIndex = index"
-                [ngValue]="phoneIndex">
+    <div *ngFor="let phone of contact.phoneNumbers; let contactIndex = index">
+      <p ngModelGroup="phoneNumbers[{{contactIndex}}]">
+        <input type="text" [(ngModel)]="phone.number" name="phone">
+        <label>
+          <select [(ngModel)]="phone.phoneType" name="phoneType">
+            <option *ngFor="let type of PhoneType.values(); let phoneIndex = index"
+                    [ngValue]="phoneIndex">
 
-                <!-- Using [value]="phoneIndex" here converted the value to a string in the phone object-->
+                    <!-- Using [value]="phoneIndex" here converted the value to a string in the phone object-->
 
-          {{type}}
-        </option>
-      </select>
-    </label>
-  </p>
+              {{type}}
+            </option>
+          </select>
+        </label>
+      </p>
+    </div>
 
   <button type="submit" [disabled]="nameForm.invalid" >Submit</button>
   <button type="button" (click)="nameForm.reset()">Clear</button>

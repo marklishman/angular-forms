@@ -1,5 +1,5 @@
 import { FullName } from './full-name';
-import { PhoneNumber } from './Phone';
+import { PhoneNumber } from './phone';
 
 export class Contact {
 
