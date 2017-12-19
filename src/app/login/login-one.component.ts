@@ -3,23 +3,19 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-login-one',
   template: `
-    <form>
+    <form (submit)="onSubmit(email.value, password.value, keep.value)">
       <p>
         Email: <input type="text" #email>
       </p>
       <p>
         Password: <input type="password" #password>
       </p>
+      <label>
+        <input type="checkbox" #keep>
+        Keep me logged in
+      </label>
       <p>
-        <label>
-          <input type="checkbox" #keep>
-          Keep me logged in
-        </label>
-      </p>
-      <p>
-        <button (click)="onSubmit(email.value, password.value, keep.value)">
-          Login
-        </button>
+        <button type="submit">Login</button>
       </p>
     </form>
     <pre>{{values | json}}</pre>

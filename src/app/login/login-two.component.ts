@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login-two',
@@ -15,14 +15,12 @@ import { FormGroup, NgForm } from '@angular/forms';
                          ngModel
                          name="password">
       </p>
-      <p>
-        <label>
-          <input type="checkbox"
-                 ngModel
-                 name="keep">
-          Keep me logged in
-        </label>
-      </p>
+      <label>
+        <input type="checkbox"
+               ngModel
+               name="keep">
+        Keep me logged in
+      </label>
       <p>
         <button type="submit"
                 (click)="onSubmit(form)">
