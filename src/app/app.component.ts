@@ -4,9 +4,17 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <p>
-      <app-form-based></app-form-based>
+      <app-login-one></app-login-one>
     </p>
-    <hr>
+    <hr/>
+    <p>
+      <app-login-two></app-login-two>
+    </p>
+    <!--<hr>-->
+    <!--<p>-->
+      <!--<app-form-based></app-form-based>-->
+    <!--</p>-->
+    <!--<hr>-->
     <!--<p>-->
       <!--<app-model-driven></app-model-driven>-->
     <!--</p>-->
