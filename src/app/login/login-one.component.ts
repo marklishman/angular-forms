@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <form (submit)="onSubmit(email.value, password.value, keep.value)">
       <p>
-        Email: <input type="text" #email>
+        Email: <input type="email" #email>
       </p>
       <p>
         Password: <input type="password" #password>

@@ -4,9 +4,10 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login-two',
   template: `
-    <form #form="ngForm">
+    <form #loginForm="ngForm"
+          (submit)="onSubmit(loginForm)">
       <p>
-        Email: <input type="text"
+        Email: <input type="email"
                       ngModel
                       name="email">
       </p>
@@ -22,8 +23,7 @@ import { NgForm } from '@angular/forms';
         Keep me logged in
       </label>
       <p>
-        <button type="submit"
-                (click)="onSubmit(form)">
+        <button type="submit">
           Login
         </button>
       </p>

@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+
+.error {
+  color: red;
+}
+
+.box {
+  border: 1px lightgray solid;
+  height: 100px;
+}
+
+.control {
+  border: 1px lightgray solid;
+  color: green;
+  padding: 5px;
+}
