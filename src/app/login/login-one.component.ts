@@ -25,11 +25,12 @@ export class LoginOneComponent {
 
   values: any = {};
 
-  onSubmit(email: string, password: string, keep: string): void {
+  onSubmit(email: string, password: string, keep: string): boolean {
     this.values = {
       email: email,
       password: password,
       keep: keep
     };
+    return false;
   }
 }

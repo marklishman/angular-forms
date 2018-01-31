@@ -17,6 +17,8 @@ import { PhoneNumber, PhoneType } from '../model/phone';
 })
 export class FormComponent {
 
+  test: string;
+
   contact: Contact;
   PhoneType = PhoneType;
 

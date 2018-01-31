@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
   selector: 'app-login-four',
   template: `
     <form #loginForm="ngForm"
-          (submit)="onSubmit(loginForm)">
+          (ngSubmit)="onSubmit(loginForm)">
       <p>
         Email: <input type="email"
                       email

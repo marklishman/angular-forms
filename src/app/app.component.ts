@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <!--<p>-->
-      <!--<app-login-one></app-login-one>-->
-    <!--</p>-->
+    <p>
+      <app-login-one></app-login-one>
+    </p>
     <!--<hr/>-->
     <!--<p>-->
       <!--<app-login-two></app-login-two>-->
